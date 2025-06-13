@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Summarizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans max-w-[1440px] mx-auto p-5">
+  <div class="flex items-center gap-2 mb-8">
+    <img src="{{ url_for('static', filename='assets/SummaryList.png') }}" alt="Icon" class="w-16 h-14 flex-shrink-0" />
+    <div class="text-black font-trebuchet text-4xl font-bold">Sumario</div>
+  </div>
+
+  <div class="text-center text-black font-['IBM Plex Sans JP'] text-[70px] font-bold mb-5">
+    AI Summarizer
+  </div>
+
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <div id="uploader" class="w-[1000px] h-[350px] bg-gray-300 mx-auto mb-10 flex flex-col items-center justify-center rounded-2xl relative transition-all">
+      <div class="absolute inset-5 border-4 border-dashed border-white rounded-xl pointer-events-none"></div>
+      <button type="button" id="chooseBtn" class="choose-file-btn px-6 py-3 bg-black text-white font-trebuchet text-4xl font-bold rounded-lg z-10">Choose File</button>
+      <div id="fileName" class="mt-4 text-lg text-gray-800 z-10"></div>
+      <button type="submit" id="summarizeBtn" class="summarize-btn mt-4 px-4 py-2 text-xs bg-black text-white rounded-md hidden">Summarize</button>
+      <input type="file" name="file" id="fileInput" accept=".pdf,.txt" class="hidden" />
+    </div>
+  </form>
+
+  <div class="flex justify-center gap-10 max-w-[1000px] mx-auto mb-10">
+    <div class="w-[500px]">
+      <p class="text-justify">
+        Quickly generate summaries of PDF and TXT file formats without the need for registration.
+        Our AI-powered summarization tool supports batch uploads and can even process scanned PDF documents.
+      </p>
+    </div>
+    <div class="w-[500px]">
+      <ul class="list-none pl-5 mt-2">
+        <li class="flex items-center mb-2">
+          <img src="{{ url_for('static', filename='assets/Approval.png') }}" alt="Check" class="w-6 h-8 flex-shrink-0 mr-2" />
+          Free and easy to use
+        </li>
+        <li class="flex items-center mb-2">
+          <img src="{{ url_for('static', filename='assets/Approval.png') }}" alt="Check" class="w-6 h-8 flex-shrink-0 mr-2" />
+          No installation required
+        </li>
+        <li class="flex items-center mb-2">
+          <img src="{{ url_for('static', filename='assets/Approval.png') }}" alt="Check" class="w-6 h-8 flex-shrink-0 mr-2" />
+          Summarize PDF and TXT (English Article)
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-16 gap-14 max-w-[1200px] mx-auto">
+    <div class="flex-1 text-center">
+      <img src="{{ url_for('static', filename='assets/Page2.png') }}" alt="Page 2" class="max-w-[500px] h-auto" />
+    </div>
+    <div class="flex-1">
+      <div class="text-[70px] w-[500px] ['IBM Plex Sans JP'] font-bold text-black leading-[100%] mb-[40px]">
+        Perfect Notes and Chapters
+      </div>
+      <p class="text-[24px] text-black text-justify font-[Lato] font-normal leading-normal">
+        Effortlessly turn lengthy documents into perfect notes and structured chapters
+        with our advanced AI summarization tool—designed to save you time, enhance comprehension,
+        and elevate your productivity.
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-16 gap-14 max-w-[1100px] mx-auto">
+    <div class="flex-1">
+      <div class="text-[70px] w-[500px] ['IBM Plex Sans JP'] font-bold text-black leading-[100%] mb-[40px]">
+        Unleash the Power of Instant Clarity in a Click
+      </div>
+      <p class="text-[24px] text-black text-justify font-[Lato] font-normal leading-normal">
+        Experience effortless understanding with “Summarize” one-click summarization, your gateway to instant clarity and time saving insight.
+      </p>
+    </div>
+    <div class="flex-1 text-center">
+      <img src="{{ url_for('static', filename='assets/Page3.png') }}" alt="Page 3" class="max-w-[500px] h-auto" />
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-16 gap-2 max-w-[1000px] mx-auto">
+    <div class="flex-1 text-center">
+      <img src="{{ url_for('static', filename='assets/Page4.png') }}" alt="Page 4" class="max-w-[500px] h-auto" />
+    </div>
+    <div class="flex-1">
+      <div class="text-[70px] w-[500px] ['IBM Plex Sans JP'] font-bold text-black leading-[100%] mb-[40px]">
+        How To Use Sumario AI?
+      </div>
+      <p class="text-[24px] text-black text-justify font-[Lato] font-normal leading-normal mb-3">
+        1. Import or drag and drop your file into the Sumario above (Support only PDF and TXT in english article).
+      </p>
+      <p class="text-[24px] text-black text-justify font-[Lato] font-normal leading-normal mb-3">
+        2. Review the provided overview of your document.
+      </p>
+      <p class="text-[24px] text-black text-justify font-[Lato] font-normal leading-normal mb-3">
+        3. Copy or download your summary to use however you need the summarization.
+      </p>
+    </div>
+  </div>
+
+  <div class="border-t border-black mt-16 max-w-[1100px] mx-auto">
+  <div class="flex items-start gap-4 mt-8">
+    <img src="{{ url_for('static', filename='assets/SummaryList.png') }}" 
+         alt="Logo Sumario" 
+         class="w-[63px] h-[56px] flex-shrink-0" />
+    <h1 class="text-[40px] font-[Trebuchet MS] font-bold text-black">Sumario</h1>
+  </div>
+
+  <div class="flex justify-between items-start mt-8 max-w-[1100px] mx-auto">
+    <p class="text-[24px] font-[Lato] text-black leading-normal max-w-[750px]">
+      At Sumario, we harness the power of AI to help you instantly summarize documents, turning complex content into clear insights. Fast, secure, and user-friendly&mdash;Sumario simplifies information, so you can focus on what truly matters.
+    </p>
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-2">
+        <img src="{{ url_for('static', filename='assets/linkedin-icon.svg') }}" 
+             alt="LinkedIn Hans Thobie S." 
+             class="w-[62px] h-[62px] flex-shrink-0" />
+        <span class="text-[30px] font-[Lato] text-black">Hans Thobie S.</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="{{ url_for('static', filename='assets/linkedin-icon.svg') }}" 
+             alt="LinkedIn Justine Declan" 
+             class="w-[62px] h-[62px] flex-shrink-0" />
+        <span class="text-[30px] font-[Lato] text-black">Justine Declan</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-left text-[32px] font-[Lato] text-black mt-8">
+    © 2025 - Sumario, All rights reserved.
+  </div>
+
+  <script>
+    const uploader = document.getElementById('uploader');
+    const fileInput = document.getElementById('fileInput');
+    const chooseBtn = document.getElementById('chooseBtn');
+    const fileName = document.getElementById('fileName');
+    const summarizeBtn = document.getElementById('summarizeBtn');
+
+    chooseBtn.addEventListener('click', () => fileInput.click());
+
+    function handleFileSelection(files) {
+      if (files.length) {
+        fileName.textContent = files[0].name;
+        summarizeBtn.classList.remove('hidden');
+      } else {
+        fileName.textContent = 'or drag & drop your file here';
+        summarizeBtn.classList.add('hidden');
+      }
+    }
+
+    fileInput.addEventListener('change', () => handleFileSelection(fileInput.files));
+
+    ['dragenter', 'dragover'].forEach(evt =>
+      uploader.addEventListener(evt, e => {
+        e.preventDefault();
+        e.stopPropagation();
+        uploader.classList.add('bg-gray-400', 'border-2', 'border-dashed', 'border-gray-800');
+      })
+    );
+
+    ['dragleave', 'drop'].forEach(evt =>
+      uploader.addEventListener(evt, e => {
+        e.preventDefault();
+        e.stopPropagation();
+        uploader.classList.remove('bg-gray-400', 'border-2', 'border-dashed', 'border-gray-800');
+      })
+    );
+
+    uploader.addEventListener('drop', e => {
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelection(e.dataTransfer.files);
+      }
+    });
+  </script>
+</body>
+</html>
