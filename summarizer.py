@@ -9,10 +9,11 @@ import PyPDF2
 
 # Download NLTK resource (hanya sekali)
 nltk.download('punkt')
+nltk.download('punkt_tab')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
-nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
 
 # Mapping POS tag ke WordNet POS
 def get_wordnet_pos(tag):
