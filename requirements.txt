@@ -2,4 +2,3 @@ flask
 nltk
 numpy
 PyPDF2
-gunicorn
