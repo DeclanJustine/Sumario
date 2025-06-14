@@ -1,0 +1,18 @@
+Bahasa Indonesia
+1. Buka VSCode dan buat sebuah direktori baru
+2. Kemudian jalankan perintah berikut di terminal:
+   git clone https://github.com/DeclanJustine/Sumario.git
+3. Buka terminal dan install semua package yang dibutuhkan:
+   pip install -r requirements.txt
+4. Terakhir, jalankan aplikasinya dengan perintah:
+   python app.py
+
+
+English Language
+1. Open VSCode and create a new directory
+2. Then run the following command in the terminal:
+   git clone https://github.com/DeclanJustine/Sumario.git
+3. Open the terminal and install the required packages:
+   pip install -r requirements.txt
+4. Finally, run the application using:
+   python app.py
